@@ -11,10 +11,14 @@ class UserListTest {
     @DisplayName("User should be found in UserList")
     public void testUserListFindUser() {
         // TODO: add 3 users to UserList
-
         // TODO: find one of them
-
         // TODO: assert that UserList found User
+        UserList userList = new UserList();
+        userList.addUser("Jane","Hello");
+        userList.addUser("Jon","Hi");
+        userList.addUser("Jiang","LOL");
+        String expected = "Jane";
+        assertEquals(expected, userList.findUserByUsername("Jon"));
         // String expected = "<one of username>";
         // String actual = user.getUsername();
         // assertEquals(expected, actual);
@@ -24,10 +28,14 @@ class UserListTest {
     @DisplayName("User can change password")
     public void testUserCanChangePassword() {
         // TODO: add 3 users to UserList
-
         // TODO: change password of one user
-
         // TODO: assert that user can change password
+        UserList userList = new UserList();
+        userList.addUser("Jane","Hello");
+        userList.addUser("Jon","Hi");
+        userList.addUser("Jiang","LOL");
+        boolean actual = userList.changePassword("Jane","Hello","Hello");
+        assertTrue(actual);
         // assertTrue(actual);
     }
 
@@ -35,10 +43,13 @@ class UserListTest {
     @DisplayName("User with correct password can login")
     public void testUserListShouldReturnObjectIfUsernameAndPasswordIsCorrect() {
         // TODO: add 3 users to UserList
-
         // TODO: call login() with correct username and password
-
         // TODO: assert that User object is found
+
+        UserList userList = new UserList();
+        userList.addUser("Jane","Hello");
+        userList.addUser("Jon","Hi");
+        userList.addUser("Jiang","LOL");
         // assertEquals(expected, actual);
     }
 

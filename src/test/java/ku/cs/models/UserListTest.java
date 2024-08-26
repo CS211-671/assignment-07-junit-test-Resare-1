@@ -17,8 +17,10 @@ class UserListTest {
         userList.addUser("Jane","Hello");
         userList.addUser("Jon","Hi");
         userList.addUser("Jiang","LOL");
+        User user = userList.findUserByUsername("Jane");
         String expected = "Jane";
-        assertEquals(expected, userList.findUserByUsername("Jon"));
+        String actual = user.getUsername();
+        assertEquals(expected, actual);
         // String expected = "<one of username>";
         // String actual = user.getUsername();
         // assertEquals(expected, actual);
@@ -34,7 +36,7 @@ class UserListTest {
         userList.addUser("Jane","Hello");
         userList.addUser("Jon","Hi");
         userList.addUser("Jiang","LOL");
-        boolean actual = userList.changePassword("Jane","Hello","Hello");
+        boolean actual = userList.changePassword("Jane","Hello","Hi");
         assertTrue(actual);
         // assertTrue(actual);
     }
@@ -50,6 +52,9 @@ class UserListTest {
         userList.addUser("Jane","Hello");
         userList.addUser("Jon","Hi");
         userList.addUser("Jiang","LOL");
+        User actual = userList.login("Jane", "Hello");
+        User expected = userList.findUserByUsername("Jane");
+        assertEquals(expected, actual);
         // assertEquals(expected, actual);
     }
 
@@ -57,11 +62,14 @@ class UserListTest {
     @DisplayName("User with incorrect password cannot login")
     public void testUserListShouldReturnNullIfUsernameAndPasswordIsIncorrect() {
         // TODO: add 3 users to UserList
-
+        UserList userList = new UserList();
+        userList.addUser("Jane", "Hello");
+        userList.addUser("Jon", "Hi");
+        userList.addUser("Jiang", "LOL");
         // TODO: call login() with incorrect username or incorrect password
-
+        User actual = userList.login("JinJo", "Hello");
         // TODO: assert that the method return null
-        // assertNull(actual);
+        assertNull(actual);
     }
 
 }
